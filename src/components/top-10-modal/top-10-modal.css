@@ -1,0 +1,22 @@
+/**********************************************
+*** © Linguagens Script > DEIS > ISEC > IPC 
+*** Jogo de Memória em React
+*** Estilos para top-10-modal.component.jsx 
+**********************************************/
+#modal-top10 .info div:nth-child(even) {
+  background: rgba(224, 221, 221);
+}
+#modal-top10 .info div:nth-child(odd) {
+  background: white;
+}
+#modal-top10 .info p {
+  padding: 5px;
+  color: black;
+}
+#modal-top10 .info div:first-child {
+  background-color: #c0bbbb;
+  font-weight: bolder;
+}
+#modal-top10 .info div p:first-child {
+  text-align: right;
+}
