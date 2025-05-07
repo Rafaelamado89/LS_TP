@@ -1,7 +1,21 @@
-import React from 'react';
-import './NomeJogadores.css';
+import React from "react";
+import { useRef, useEffect, useState } from "react";
+import "./NomeJogadores.css";
 
-const NomeJogadores = () => {
+function SetupGame({ isOpen, onClose }) {
+  const ref = useRef();
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      ref.current?.showModal();
+    } else {
+      ref.current?.close();
+    }
+  }, [isOpen]);
+
+
   return (
     <div className="modal-overlay">
       <div className="modal">
@@ -20,4 +34,4 @@ const NomeJogadores = () => {
   );
 };
 
-export default NomeJogadores;
+export default SetupGame;

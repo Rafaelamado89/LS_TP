@@ -1,7 +1,6 @@
 import "./assets/styles/App.css";
-import Header from "./components/header/header.component";
 import NomeJogadores from "./components/game-panel/NomeJogadores";
-import ControlPanel from "./components/control-panel/tabuleiro";
+import ControlPanel from "./components/tabuleiro/tabuleiro";
 import {useState} from "react";
 
 
@@ -22,14 +21,13 @@ function App() {
 
   return (
     <div id="container">
-      <Header />
       <main>
         <ControlPanel 
         gameStarted={gameStarted}
         onGameStart={handleGameStart}
         selectedLevel={selectedLevel}
-        onLevelChange={handleLevelChange}
-        /*<NomeJogadores />*/ /> 
+        onLevelChange={handleLevelChange} />
+        <NomeJogadores />
         
       </main>
     </div>

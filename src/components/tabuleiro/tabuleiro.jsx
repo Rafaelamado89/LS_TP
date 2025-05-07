@@ -12,7 +12,7 @@ function ControlPanel({gameStarted, onGameStart,selectedLevel, onLevelChange}) {
             <img src="/assets/images/peca-azul.png" alt="Player Face" />
           </div>
             <div className="player-name">PLAYER 1</div>
-            <div className="player-score">0</div>
+            <div className="player-time">00:00</div>
           </div>
         </div>
   
@@ -28,8 +28,8 @@ function ControlPanel({gameStarted, onGameStart,selectedLevel, onLevelChange}) {
             ))}
           </div>
   
-          <div className="turn-banner">PLAYER 1'S TURN</div>
-          <div className="timer">24s</div>
+          <div className="btn-2players">2 Jogadores</div>
+          <div className="btn-CPU">CPU</div>
         </div>
   
         {/* Painel jogador 2 */}
@@ -39,7 +39,7 @@ function ControlPanel({gameStarted, onGameStart,selectedLevel, onLevelChange}) {
               <img src="/assets/images/peca-vermelha.png" alt="Player Face" />
             </div>
             <div className="player-name">CPU</div>
-            <div className="player-score">0</div>
+            <div className="player-time">00:00</div>
           </div>
         </div>
       </div>
