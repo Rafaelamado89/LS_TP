@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none; /* flex / none */
     align-items: center;
     justify-content: center;
     z-index: 1000;

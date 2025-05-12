@@ -14,19 +14,12 @@ function App() {
     setGameStarted(!gameStarted);
   }
 
-  function handleLevelChange(evento){
-    const nivelSelecionado = evento.curretnTarget.value;
-    setSelectedLevel(nivelSelecionado);
-  }
-
   return (
     <div id="container">
       <main>
         <ControlPanel 
         gameStarted={gameStarted}
-        onGameStart={handleGameStart}
-        selectedLevel={selectedLevel}
-        onLevelChange={handleLevelChange} />
+        onGameStart={handleGameStart}/>
         <NomeJogadores />
         
       </main>
