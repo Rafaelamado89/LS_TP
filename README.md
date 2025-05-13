@@ -1,3 +1,19 @@
+## Instructions on how to run locally
+
+# Install dependencies
+
+Install react dependencies through npm
+
+```javascript
+npm instal
+```
+
+# Run local version
+
+```js
+npm run build
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
