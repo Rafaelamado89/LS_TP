@@ -1,60 +1,84 @@
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* flex / none */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 16px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  }
+.window-2players,
+.window-CPU {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex; /* flex / none */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
 
-  .modal h2 {
-    margin-bottom: 15px;
-  }
-  
-  .input-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  
-  .btn-confirmar {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .btn-confirmar:hover {
-    background-color: #0056b3;
-  }
-  
+.window { 
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.window h2 {
+  margin-bottom: 15px;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.btn-confirmar {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-confirmar:hover {
+  background-color: #0056b3;
+}
+
+.btn-2players,
+.btn-CPU {
+  display: flex;
+  position: absolute;
+  bottom: 100px;
+  transform: translateX(-50%);
+  background-color: #ff6b81;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-CPU {
+  right: 32%;
+  padding: 8px 50px;
+}
+
+.btn-2players {
+  left: 42%;
+  padding: 8px 20px;
+}

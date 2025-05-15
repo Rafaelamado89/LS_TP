@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./tabuleiro.css";
 function ControlPanel({
   gameStarted,
@@ -11,6 +11,7 @@ function ControlPanel({
 }) {
 
   const estiloParaDL = gameStarted ? "gameStarted" : "";
+  const [openWindow, setOpenWindow] = useState(false);
   return (
       <div className="game-container">
         {/* Painel jogador 1 */}
@@ -65,10 +66,6 @@ function ControlPanel({
             </div>
           ))}
         </div>
-
-        {/* Game mode buttons */}
-        <div className="btn-2players">2 Jogadores</div>
-        <div className="btn-CPU">CPU</div>
       </div>
         
         {/* Painel jogador 2 */}
