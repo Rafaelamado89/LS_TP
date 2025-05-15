@@ -81,29 +81,18 @@ body, html {
   background-color: #ecf0f1;
   border-radius: 50%;
   box-shadow: inset 0 0 6px #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.cell img {
+  width: 55px;
+  /* height: 55px; */
+  /* object-fit: contain; */
+  /* pointer-events: none; avoid interfering with clicks */
 }
 
 /* Turno e tempo */
-.btn-2players,
-.btn-CPU {
-  display: flex;
-  position: absolute;
-  bottom: 40px;
-  transform: translateX(-50%);
-  background-color: #ff6b81;
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.btn-CPU{
-  right:10%;
-  padding: 8px 50px;
-}
-
-.btn-2players {
-  left: 30%;
-  padding: 8px 20px;
-}
-
