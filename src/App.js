@@ -1,6 +1,6 @@
-  import {useState} from "react";
+ import {useState} from "react";
   import "./assets/styles/App.css";
-  import SetupGame from "./components/game-panel/NomeJogadores";
+  import NomeJogadores from "./components/game-panel/NomeJogadores";
   import ControlPanel from "./components/tabuleiro/tabuleiro";
   import { BOARD_ROWS } from "./constants";
   import { BOARD_COLS } from "./constants";
@@ -29,18 +29,23 @@
       setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
     }
 
+    const [jogador1, setJogador1] = useState("PLAYER 1");
+    const [jogador2, setJogador2] = useState("PLAYER 2");
+
 
     return (
       <div id="container">
         <main>
+           <NomeJogadores setJogador1={setJogador1} setJogador2={setJogador2} />
           <ControlPanel 
             gameStarted={gameStarted}
             onGameStart={handleGameStart}
             grid={grid}
             currentPlayer={currentPlayer}
             onColumnClick={handleColumnClick}
+            jogador1={jogador1}
+            jogador2={jogador2} 
           />
-          <SetupGame />
           
         </main>
       </div>

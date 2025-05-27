@@ -7,7 +7,9 @@ function ControlPanel({
   onLevelChange,
   grid,
   currentPlayer,
-  onColumnClick
+  onColumnClick,
+  jogador1,
+  jogador2
 }) {
 
   const estiloParaDL = gameStarted ? "gameStarted" : "";
@@ -20,7 +22,7 @@ function ControlPanel({
             <div className="player-face">
               <img src="/assets/images/peca-azul.png" alt="Player Face" />
             </div>
-            <div className="player-name">PLAYER 1</div>
+            <div className="player-name">{jogador1}</div>
             <div className="player-time">00:00</div>
           </div>
         </div>
@@ -56,7 +58,7 @@ function ControlPanel({
             <div className="player-face">
               <img src="/assets/images/peca-vermelha.png" alt="Player Face" />
             </div>
-            <div className="player-name">CPU</div>
+            <div className="player-name">{jogador2}</div>
             <div className="player-time">00:00</div>
           </div>
         </div>
