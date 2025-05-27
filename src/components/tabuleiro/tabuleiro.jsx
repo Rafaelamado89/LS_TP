@@ -15,61 +15,43 @@ function ControlPanel({
   return (
       <div className="game-container">
         {/* Painel jogador 1 */}
-        <div className="player-panel">
+        <div className={`player-panel ${currentPlayer === 1 ? "active-blue" : ""}`}>
           <div className="player-card">
-          <div className="player-face">
-            <img src="/assets/images/peca-azul.png" alt="Player Face" />
-          </div>
+            <div className="player-face">
+              <img src="/assets/images/peca-azul.png" alt="Player Face" />
+            </div>
             <div className="player-name">PLAYER 1</div>
             <div className="player-time">00:00</div>
           </div>
         </div>
-  
-        {/* Área central com tabuleiro e info */}
-        {/* <div className="board-wrapper">
+        
+        {/* Game board and controls */}
+        <div className="board-wrapper">
+          {/* Dynamic board rendering based on grid state */}
           <div className="board">
-            {Array.from({ length: 6 }).map((_, rowIndex) => (
+            {grid.map((row, rowIndex) => (
               <div className="row" key={rowIndex}>
-                {Array.from({ length: 7 }).map((_, colIndex) => (
-                  <div className="cell" key={colIndex}></div>
+                {row.map((cellValue, colIndex) => (
+                  <div
+                    className="cell"
+                    key={colIndex}
+                    onClick={() => onColumnClick(colIndex)} // Click on a column
+                  >
+                    {cellValue === 1 && (
+                      <img src="/assets/images/peca-azul.png" alt="P1" />
+                    )}
+                    {cellValue === 2 && (
+                      <img src="/assets/images/peca-vermelha.png" alt="P2" />
+                    )}
+                  </div>
                 ))}
               </div>
             ))}
           </div>
-  
-          <div className="btn-2players">2 Jogadores</div>
-          <div className="btn-CPU">CPU</div>
         </div>
-   */}
-        
-        
-      {/* Game board and controls */}
-      <div className="board-wrapper">
-        {/* Dynamic board rendering based on grid state */}
-        <div className="board">
-          {grid.map((row, rowIndex) => (
-            <div className="row" key={rowIndex}>
-              {row.map((cellValue, colIndex) => (
-                <div
-                  className="cell"
-                  key={colIndex}
-                  onClick={() => onColumnClick(colIndex)} // Click on a column
-                >
-                  {cellValue === 1 && (
-                    <img src="/assets/images/peca-azul.png" alt="P1" />
-                  )}
-                  {cellValue === 2 && (
-                    <img src="/assets/images/peca-vermelha.png" alt="P2" />
-                  )}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
         
         {/* Painel jogador 2 */}
-        <div className="player-panel">
+        <div className={`player-panel ${currentPlayer === 2 ? "active-red" : ""}`}>
           <div className="player-card">
             <div className="player-face">
               <img src="/assets/images/peca-vermelha.png" alt="Player Face" />

@@ -19,6 +19,17 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 20px solid transparent;
+  border-radius: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.active-blue {
+  border-color: #3498db;
+}
+
+.active-red {
+  border-color: #e74c3c;
 }
 
 .player-card {
