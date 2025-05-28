@@ -127,6 +127,8 @@ body, html {
   right: 15px;
   bottom: 15px;
   display: flex;
+  width: 80%;
+  margin: auto;
   gap: 8px;
   z-index: 20;
   pointer-events: none; /* torna tudo invisível ao mouse */
