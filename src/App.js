@@ -39,7 +39,8 @@
 
 
     function handleGameStart(){
-      console.log("game started")
+      setGrid(Array.from({ length: 6 }, () => Array(7).fill(null))); // restart the grid
+      setCurrentPlayer(1); // sets player to 1
       setGameStarted(true);
       resetTimers();
     }
