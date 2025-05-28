@@ -24,8 +24,14 @@
     } = useDualTurnTimers(
       currentPlayer,
       gameStarted,
-      () => setCurrentPlayer((prev) => (prev === 1 ? 2 : 1))
+      // () => setCurrentPlayer((prev) => (prev === 1 ? 2 : 1))
+      nextPlayer
   );
+
+  function nextPlayer() {
+    setCurrentPlayer((prev) => (prev === 1 ? 2 : 1));
+    resetTimers();
+  }
 
 
     function handleGameStart(){
@@ -39,7 +45,8 @@
       if (!success) return; // Return if column is full
 
       setGrid(updatedGrid);
-      setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
+      // setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
+      nextPlayer()
     }
 
     const [jogador1, setJogador1] = useState("PLAYER 1");
