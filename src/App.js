@@ -6,6 +6,11 @@
   import { BOARD_COLS } from "./constants";
   import { useDualTurnTimers } from "./helpers/timer";
   import { insertPiece } from "./helpers/insert-piece";
+  import { checkWinner } from "./helpers/check-winner";
+
+
+
+// TODO: add computer selection of a valid cell
 
 
   function App() {
@@ -24,7 +29,6 @@
     } = useDualTurnTimers(
       currentPlayer,
       gameStarted,
-      // () => setCurrentPlayer((prev) => (prev === 1 ? 2 : 1))
       nextPlayer
   );
 
@@ -41,12 +45,19 @@
     }
     
     function handleColumnClick(colIndex) {
-      const { updatedGrid, success } = insertPiece(grid, colIndex, currentPlayer);
+      const { updatedGrid, success, rowInserted } = insertPiece(grid, colIndex, currentPlayer);
       if (!success) return; // Return if column is full
 
       setGrid(updatedGrid);
-      // setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
-      nextPlayer()
+      nextPlayer();
+
+      // Check for a winner
+      const won = checkWinner(updatedGrid, currentPlayer, rowInserted, colIndex);
+      if (won) {
+        alert(`O jogador ${currentPlayer === 1 ? jogador1 : jogador2} venceu!`);
+        setGameStarted(false);
+        return;
+      }
     }
 
     const [jogador1, setJogador1] = useState("PLAYER 1");
