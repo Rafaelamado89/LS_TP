@@ -1,4 +1,4 @@
- import {useEffect, useState} from "react";
+  import {useEffect, useState} from "react";
   import "./assets/styles/App.css";
   import NomeJogadores from "./components/game-panel/NomeJogadores";
   import ControlPanel from "./components/tabuleiro/tabuleiro";
@@ -11,6 +11,8 @@
 
     const [gameStarted, setGameStarted] = useState(false);
     const [selectedLevel, setSelectedLevel] = useState(0);
+    const [winner, setWinner] = useState(null);
+    const [hideButtons, setHideButtons] = useState(false); 
     const [grid, setGrid] = useState(
       Array.from({ length: 6 }, () => Array(7).fill(null))
     );
@@ -39,7 +41,7 @@
 
       const won = checkWinner(updatedGrid, player, rowInserted, colIndex);
       if (won) {
-        alert(`O jogador ${player === 1 ? jogador1 : jogador2} venceu!`);
+        setWinner(currentPlayer);
         setGameStarted(false);
         return;
       }
@@ -103,6 +105,14 @@
       return -1;
     }
 
+    function resetGame() {
+    setGrid(Array.from({ length: 6 }, () => Array(7).fill(null)));
+    setCurrentPlayer(1);
+    setGameStarted(false);
+    setWinner(null);
+    setHideButtons(false);
+    resetTimers();
+  }
 
     const [jogador1, setJogador1] = useState("PLAYER 1");
     const [jogador2, setJogador2] = useState("PLAYER 2");
@@ -116,6 +126,8 @@
             setJogador2={setJogador2}
             onGameStart={handleGameStart}
             setSelectedLevel={setSelectedLevel}
+            hideButtons={hideButtons}
+            setHideButtons={setHideButtons}
           />
           <ControlPanel 
             gameStarted={gameStarted}
@@ -128,6 +140,15 @@
             timeLeft1={timeLeft1}
             timeLeft2={timeLeft2}
           />
+          
+          {winner && (
+          <div className="modal">
+            <div className="modal-content">
+              <h2>{winner === 1 ? jogador1 : jogador2} Ganhou!</h2>
+              <button onClick={resetGame}>Jogar de Novo</button>
+            </div>
+          </div>
+        )}
           
         </main>
       </div>

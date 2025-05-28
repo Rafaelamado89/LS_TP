@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NomeJogadores.css";
 
-function NomeJogadores({ setJogador1, setJogador2, onGameStart, setSelectedLevel }) {
+function NomeJogadores({ setJogador1, setJogador2, onGameStart, setSelectedLevel, setHideButtons, hideButtons }) {
   const [openWindow, setOpenWindow] = useState(false);
   const [openWindow2, setOpenWindow2] = useState(false);
   const [nome1, setNome1] = useState('');
@@ -76,13 +76,29 @@ function NomeJogadores({ setJogador1, setJogador2, onGameStart, setSelectedLevel
         </div>
       )}
 
-      <div className="btn-2players" onClick={() => setOpenWindow(true)}>
-        2 Jogadores
-      </div>
+      {!hideButtons && (
+        <>
+          <div 
+            className="btn-2players" 
+            onClick={() => {
+              setOpenWindow(true);
+              setHideButtons(true);
+            }}
+          >
+            2 Jogadores
+          </div>
 
-      <div className="btn-CPU" onClick={() => setOpenWindow2(true)}>
-        CPU
-      </div>
+          <div
+            className="btn-CPU"
+            onClick={() => {
+              setOpenWindow2(true);
+              setHideButtons(true);
+            }}
+          >
+            CPU
+          </div>
+        </>
+      )}
     </div>
   );
 }
