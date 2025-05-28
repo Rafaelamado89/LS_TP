@@ -65,18 +65,18 @@
   position: absolute;
   bottom: 100px;
   transform: translateX(-50%);
-  background-color: #ff6b81;
+  background-color: red;
   color: white;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 22px;
   cursor: pointer;
   z-index:1000;
 }
 
 .btn-CPU {
   right: 32%;
-  padding: 8px 50px;
+  padding: 8px 80px;
 }
 
 .btn-2players {

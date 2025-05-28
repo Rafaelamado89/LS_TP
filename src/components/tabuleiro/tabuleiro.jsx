@@ -52,6 +52,7 @@ function ControlPanel({
               </div>
             ))}
           </div>
+          {!gameStarted && <div className="board-blocker" />}
         </div>
         
         {/* Painel jogador 2 */}
