@@ -1,9 +1,10 @@
- import {useState} from "react";
+ import {useEffect, useState} from "react";
   import "./assets/styles/App.css";
   import NomeJogadores from "./components/game-panel/NomeJogadores";
   import ControlPanel from "./components/tabuleiro/tabuleiro";
   import { BOARD_ROWS } from "./constants";
   import { BOARD_COLS } from "./constants";
+  import { useDualTurnTimers } from "./helpers/timer";
   import { insertPiece } from "./helpers/insert-piece";
 
 
@@ -16,9 +17,21 @@
     );
 
     const [currentPlayer, setCurrentPlayer] = useState(1);
+    const {
+      timeLeft1,
+      timeLeft2,
+      resetTimers,
+    } = useDualTurnTimers(
+      currentPlayer,
+      gameStarted,
+      () => setCurrentPlayer((prev) => (prev === 1 ? 2 : 1))
+  );
+
 
     function handleGameStart(){
-      setGameStarted(!gameStarted);
+      console.log("game started")
+      setGameStarted(true);
+      resetTimers();
     }
     
     function handleColumnClick(colIndex) {
@@ -36,7 +49,11 @@
     return (
       <div id="container">
         <main>
-           <NomeJogadores setJogador1={setJogador1} setJogador2={setJogador2} />
+          <NomeJogadores
+            setJogador1={setJogador1}
+            setJogador2={setJogador2}
+            onGameStart={handleGameStart}
+          />
           <ControlPanel 
             gameStarted={gameStarted}
             onGameStart={handleGameStart}
@@ -45,6 +62,8 @@
             onColumnClick={handleColumnClick}
             jogador1={jogador1}
             jogador2={jogador2} 
+            timeLeft1={timeLeft1}
+            timeLeft2={timeLeft2}
           />
           
         </main>

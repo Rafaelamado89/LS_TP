@@ -9,7 +9,9 @@ function ControlPanel({
   currentPlayer,
   onColumnClick,
   jogador1,
-  jogador2
+  jogador2,
+  timeLeft1,
+  timeLeft2
 }) {
 
   const estiloParaDL = gameStarted ? "gameStarted" : "";
@@ -23,7 +25,7 @@ function ControlPanel({
               <img src="/assets/images/peca-azul.png" alt="Player Face" />
             </div>
             <div className="player-name">{jogador1}</div>
-            <div className="player-time">00:00</div>
+            <div className="player-time">{timeLeft1}</div>
           </div>
         </div>
         
@@ -59,7 +61,7 @@ function ControlPanel({
               <img src="/assets/images/peca-vermelha.png" alt="Player Face" />
             </div>
             <div className="player-name">{jogador2}</div>
-            <div className="player-time">00:00</div>
+            <div className="player-time">{timeLeft2}</div>
           </div>
         </div>
       </div>
