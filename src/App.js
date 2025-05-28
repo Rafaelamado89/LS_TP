@@ -2,15 +2,9 @@
   import "./assets/styles/App.css";
   import NomeJogadores from "./components/game-panel/NomeJogadores";
   import ControlPanel from "./components/tabuleiro/tabuleiro";
-  import { BOARD_ROWS } from "./constants";
-  import { BOARD_COLS } from "./constants";
   import { useDualTurnTimers } from "./helpers/timer";
   import { insertPiece } from "./helpers/insert-piece";
   import { checkWinner } from "./helpers/check-winner";
-
-
-
-// TODO: add computer selection of a valid cell
 
 
   function App() {
@@ -40,7 +34,7 @@
 
     function handleGameStart(){
       setGrid(Array.from({ length: 6 }, () => Array(7).fill(null))); // restart the grid
-      setCurrentPlayer(1); // sets player to 1
+      setCurrentPlayer(Math.random() < 0.5 ? 1 : 2); // a random player starts
       setGameStarted(true);
       resetTimers();
     }
