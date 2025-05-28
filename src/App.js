@@ -6,6 +6,12 @@
   import { insertPiece } from "./helpers/insert-piece";
   import { checkWinner } from "./helpers/check-winner";
 
+  // TODO: Remove console.logs
+  // TODO: Remove legacy imports
+  // TODO: Deduplicate code
+  // TODO: Add docstrings
+
+
 
   function App() {
 
@@ -19,6 +25,17 @@
 
     const [currentPlayer, setCurrentPlayer] = useState(1);
     const {timeLeft1, timeLeft2, resetTimers} = useDualTurnTimers(currentPlayer, gameStarted,nextPlayer);
+    const [bonusCells, setBonusCells] = useState([]);
+
+  function generateBonusCells() {
+    const positions = new Set();
+    while (positions.size < 5) {
+      const row = Math.floor(Math.random() * 6);  // 6 rows
+      const col = Math.floor(Math.random() * 7);  // 7 cols
+      positions.add(`${row}-${col}`);
+    }
+    return Array.from(positions);
+  }
 
   function nextPlayer() {
     setCurrentPlayer((prev) => (prev === 1 ? 2 : 1));
@@ -30,6 +47,7 @@
       setGrid(Array.from({ length: 6 }, () => Array(7).fill(null))); // restart the grid
       setCurrentPlayer(Math.random() < 0.5 ? 1 : 2); // a random player starts
       setGameStarted(true);
+      setBonusCells(generateBonusCells());
       resetTimers();
     }
     
@@ -46,7 +64,15 @@
         return;
       }
 
-      nextPlayer();
+      const key = `${rowInserted}-${colIndex}`;
+      const isBonus = bonusCells.includes(key);
+
+      if (!isBonus) {
+        nextPlayer();
+      } else {
+        // if it is a bonus cell, restart timer and skip adversary turn
+        resetTimers();
+      }
     }
 
     function handleColumnClick(colIndex) {
@@ -139,6 +165,7 @@
             jogador2={jogador2} 
             timeLeft1={timeLeft1}
             timeLeft2={timeLeft2}
+            bonusCells={bonusCells}
           />
           
           {winner && (

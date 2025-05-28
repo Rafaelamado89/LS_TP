@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Celula from "../celula/Celula";
 import "./tabuleiro.css";
 function ControlPanel({
   gameStarted,
@@ -11,7 +12,8 @@ function ControlPanel({
   jogador1,
   jogador2,
   timeLeft1,
-  timeLeft2
+  timeLeft2,
+  bonusCells = []
 }) {
 
   const estiloParaDL = gameStarted ? "gameStarted" : "";
@@ -32,26 +34,29 @@ function ControlPanel({
         {/* Game board and controls */}
         <div className="board-wrapper">
           {/* Dynamic board rendering based on grid state */}
+          
           <div className="board">
             {grid.map((row, rowIndex) => (
               <div className="row" key={rowIndex}>
-                {row.map((cellValue, colIndex) => (
-                  <div
-                    className="cell"
-                    key={colIndex}
-                    onClick={() => onColumnClick(colIndex)} // Click on a column
-                  >
-                    {cellValue === 1 && (
-                      <img src="/assets/images/peca-azul.png" alt="P1" />
-                    )}
-                    {cellValue === 2 && (
-                      <img src="/assets/images/peca-vermelha.png" alt="P2" />
-                    )}
-                  </div>
-                ))}
+                {row.map((cellValue, colIndex) => {
+                  const key = `${rowIndex}-${colIndex}`;
+                  const isBonus = bonusCells.includes(key);
+
+                  return (
+                    <div className="cell" key={colIndex} onClick={() => onColumnClick(colIndex)}>
+                      <Celula
+                        row={rowIndex}
+                        col={colIndex}
+                        value={cellValue}
+                        isBonus={isBonus}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
+          
           {!gameStarted && <div className="board-blocker" />}
         </div>
         
