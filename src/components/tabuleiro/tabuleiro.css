@@ -119,4 +119,48 @@ body, html {
 }
 
 
-/* Turno e tempo */
+/* hovered columns */
+.hover-column-overlay {
+  position: absolute;
+  top: 15px; /* altura do padding da .board */
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+  pointer-events: none; /* torna tudo invisível ao mouse */
+}
+
+.hover-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: auto; /* reativa o hover e click nas colunas */
+  position: relative;
+}
+
+.hover-piece {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.hover-piece.jogador1 {
+  background-color: darkcyan;
+}
+
+.hover-piece.jogador2 {
+  background-color: red;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,8 +1,6 @@
 .celula {
   width: 60px;
   height: 60px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
   position: relative;
   display: flex;
   align-items: center;
@@ -11,6 +9,9 @@
 
 .celula.bonus {
   background-color: rgb(255, 142, 61);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .peca {

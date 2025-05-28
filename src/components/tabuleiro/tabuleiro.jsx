@@ -18,6 +18,7 @@ function ControlPanel({
 
   const estiloParaDL = gameStarted ? "gameStarted" : "";
   const [openWindow, setOpenWindow] = useState(false);
+  const [hoveredCol, setHoveredCol] = useState(null);
   return (
       <div className="game-container">
         {/* Painel jogador 1 */}
@@ -35,6 +36,23 @@ function ControlPanel({
         <div className="board-wrapper">
           {/* Dynamic board rendering based on grid state */}
           
+            {/* Transparent overlay for hovered columns */}
+            <div className="hover-column-overlay">
+              {Array(7).fill(null).map((_, colIndex) => (
+                <div
+                  key={colIndex}
+                  className="hover-column"
+                  onMouseEnter={() => setHoveredCol(colIndex)}
+                  onMouseLeave={() => setHoveredCol(null)}
+                  onClick={() => onColumnClick(colIndex)}
+                >
+                  {hoveredCol === colIndex && (
+                    <div className={`hover-piece jogador${currentPlayer}`} />
+                  )}
+                </div>
+              ))}
+            </div>
+
           <div className="board">
             {grid.map((row, rowIndex) => (
               <div className="row" key={rowIndex}>
