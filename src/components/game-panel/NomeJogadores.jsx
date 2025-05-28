@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NomeJogadores.css";
 
-function NomeJogadores({ setJogador1, setJogador2, onGameStart }) {
+function NomeJogadores({ setJogador1, setJogador2, onGameStart, setSelectedLevel }) {
   const [openWindow, setOpenWindow] = useState(false);
   const [openWindow2, setOpenWindow2] = useState(false);
   const [nome1, setNome1] = useState('');
@@ -11,6 +11,7 @@ function NomeJogadores({ setJogador1, setJogador2, onGameStart }) {
     setJogador1(nome1 || "PLAYER 1");
     setJogador2(nome2 || "PLAYER 2");
     setOpenWindow(false);
+    setSelectedLevel(0);
     onGameStart();
   };
 
@@ -18,6 +19,7 @@ function NomeJogadores({ setJogador1, setJogador2, onGameStart }) {
     setJogador1(nome1 || "PLAYER 1");
     setJogador2("CPU");
     setOpenWindow2(false);
+    setSelectedLevel(1);
     onGameStart();
   };
 

@@ -20,7 +20,6 @@ export function useDualTurnTimers(currentPlayer, gameStarted, onTimeout, initial
             console.log("here")
             return 0;
           }
-          console.log(prev)
           return prev - 1;
         });
       } else {
@@ -30,7 +29,6 @@ export function useDualTurnTimers(currentPlayer, gameStarted, onTimeout, initial
             onTimeout();
             return 0;
           }
-          console.log(prev)
           return prev - 1;
         });
       }
