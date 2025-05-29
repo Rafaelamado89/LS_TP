@@ -1,4 +1,3 @@
-import React from "react";
 import "../../components/celula/Celula.css";
 
 function Celula({ row, col, value, isBonus }) {

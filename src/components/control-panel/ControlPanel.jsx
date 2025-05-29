@@ -3,9 +3,6 @@ import Celula from "../celula/Celula";
 import "./ControlPanel.css";
 function ControlPanel({
   gameStarted,
-  onGameStart,
-  selectedLevel,
-  onLevelChange,
   grid,
   currentPlayer,
   onColumnClick,
@@ -16,8 +13,7 @@ function ControlPanel({
   bonusCells = []
 }) {
 
-  const estiloParaDL = gameStarted ? "gameStarted" : "";
-  const [openWindow, setOpenWindow] = useState(false);
+  // const estiloParaDL = gameStarted ? "gameStarted" : "";
   const [hoveredCol, setHoveredCol] = useState(null);
   return (
       <div className="game-container">
