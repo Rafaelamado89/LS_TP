@@ -7,7 +7,6 @@ export function useDualTurnTimers(currentPlayer, gameStarted, onTimeout, initial
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    console.log(gameStarted)
     if (!gameStarted) return;
 
     clearInterval(intervalRef.current);
@@ -17,7 +16,6 @@ export function useDualTurnTimers(currentPlayer, gameStarted, onTimeout, initial
           if (prev <= 1) {
             clearInterval(intervalRef.current);
             onTimeout();
-            console.log("here")
             return 0;
           }
           return prev - 1;

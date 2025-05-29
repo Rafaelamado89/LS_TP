@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Celula from "../celula/Celula";
-import "./tabuleiro.css";
+import "./ControlPanel.css";
 function ControlPanel({
   gameStarted,
   onGameStart,

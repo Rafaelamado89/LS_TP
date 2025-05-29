@@ -79,7 +79,7 @@ function NomeJogadores({ setJogador1, setJogador2, onGameStart, setSelectedLevel
       {!hideButtons && (
         <>
           <div 
-            className="btn-2players" 
+              className="btn-2players" 
             onClick={() => {
               setOpenWindow(true);
               setHideButtons(true);

@@ -1,7 +1,7 @@
   import {useEffect, useState} from "react";
   import "./assets/styles/App.css";
   import NomeJogadores from "./components/game-panel/NomeJogadores";
-  import ControlPanel from "./components/tabuleiro/tabuleiro";
+  import ControlPanel from "./components/control-panel/ControlPanel";
   import { useDualTurnTimers } from "./helpers/timer";
   import { insertPiece } from "./helpers/insert-piece";
   import { checkWinner } from "./helpers/check-winner";
@@ -82,19 +82,14 @@
     }
 
     useEffect(() => {
-      console.log('Here 1');
       if (!gameStarted || selectedLevel !== 1 || currentPlayer !== 2) {
-        console.log("Condições não satisfeitas:", { gameStarted, selectedLevel, currentPlayer });
         return
       };
 
       const timeout = setTimeout(() => {
         const cpuCol = cpuMove(grid, 2);
-        console.log("CPU escolheu coluna:", cpuCol);
         if (cpuCol !== null) {
           processMove(cpuCol, 2);
-        } else {
-          console.log("Nenhuma coluna válida para CPU.");
         }
       }, 2000); // delay to look more natural
       
