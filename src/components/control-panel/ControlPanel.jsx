@@ -2,6 +2,29 @@ import React, { useState } from "react";
 import Celula from "../celula/Celula";
 import "./ControlPanel.css";
 
+/**
+ * Componente que renderiza a interface principal do jogo, incluindo:
+ * - O tabuleiro interativo 6x7 onde os jogadores fazem suas jogadas
+ * - Painéis laterais mostrando informações dos jogadores:
+ *   - Nome do jogador
+ *   - Tempo restante para a jogada atual
+ *   - Indicador visual de qual jogador está ativo
+ * - Preview da peça que será colocada ao passar o mouse sobre uma coluna
+ * - Células bônus destacadas em laranja
+ * - Botão para terminar a partida atual
+ * 
+ * @param {Object} props - Propriedades do componente
+ * @param {boolean} props.gameStarted - Indica se o jogo está em andamento
+ * @param {Array<Array<number|null>>} props.grid - Estado atual do tabuleiro
+ * @param {number} props.currentPlayer - Jogador atual (1 = azul, 2 = vermelho)
+ * @param {Function} props.onColumnClick - Função chamada quando uma coluna é clicada
+ * @param {string} props.jogador1 - Nome do jogador 1
+ * @param {string} props.jogador2 - Nome do jogador 2
+ * @param {string} props.timeLeft1 - Tempo restante do jogador 1 (formato "ss:cc")
+ * @param {string} props.timeLeft2 - Tempo restante do jogador 2 (formato "ss:cc")
+ * @param {Array<string>} props.bonusCells - Coordenadas das células bônus ("linha-coluna")
+ * @param {Function} props.onEndGame - Função para terminar o jogo atual
+ */
 function ControlPanel({
   gameStarted,
   grid,
