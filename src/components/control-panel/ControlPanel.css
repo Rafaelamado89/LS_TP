@@ -122,9 +122,6 @@ body, html {
 
 .cell img {
   width: 55px;
-  /* height: 55px; */
-  /* object-fit: contain; */
-  /* pointer-events: none; avoid interfering with clicks */
 }
 
 /* Board block when game have not started yet */
@@ -135,10 +132,9 @@ body, html {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: rgba(255, 255, 255, 0); /* makes it transparent */
-  pointer-events: all; /* blocks clicks */
+  background: rgba(255, 255, 255, 0);
+  pointer-events: all;
 }
-
 
 /* hovered columns */
 .hover-column-overlay {

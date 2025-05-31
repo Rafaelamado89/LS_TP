@@ -4,14 +4,6 @@
 *** Estilos Index.js
 **********************************************/
 
-:root {
-  --globalColor: #404487;
-  --messageColor: rgb(11, 11, 241);
-  --boxshadow0: 0px 0px 0px;
-  --top10Color: #404487;
-  --gameOverColor: #404487;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -39,6 +31,7 @@ select,
 #panel-control dd {
   user-select: none;
 }
+
 select,
 button {
   cursor: pointer;

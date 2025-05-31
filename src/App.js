@@ -130,22 +130,15 @@ function App() {
     return -1;
   }
 
-  function resetGame() {
+  function resetGame(clearBonusCells = false) {
     setGrid(createEmptyGrid());
     setCurrentPlayer(1);
     setGameStarted(false);
     setWinner(null);
     setHideButtons(false);
-    resetTimers();
-  }
-
-  function handleEndGame() {
-    setGrid(createEmptyGrid());
-    setCurrentPlayer(1);
-    setGameStarted(false);
-    setWinner(null);
-    setHideButtons(false);
-    setBonusCells([]);
+    if (clearBonusCells) {
+      setBonusCells([]);
+    }
     resetTimers();
   }
 
@@ -171,14 +164,14 @@ function App() {
           timeLeft1={timeLeft1}
           timeLeft2={timeLeft2}
           bonusCells={bonusCells}
-          onEndGame={handleEndGame}
+          onEndGame={() => resetGame(true)}
         />
 
         {winner && (
           <div className="modal">
             <div className="modal-content">
               <h2>{winner === 1 ? jogador1 : jogador2} Ganhou!</h2>
-              <button onClick={resetGame}>Jogar de Novo</button>
+              <button onClick={() => resetGame(false)}>Jogar de Novo</button>
             </div>
           </div>
         )}
