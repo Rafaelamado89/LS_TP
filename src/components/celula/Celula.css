@@ -18,6 +18,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  position: absolute;
 }
 
 .peca.jogador1 {
@@ -26,4 +27,19 @@
 
 .peca.jogador2 {
   background-color: red;
+}
+
+@keyframes dropPiece {
+  0% {
+    transform: translateY(calc(-100% * var(--drop-distance)));
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.peca.animate-drop {
+  animation: dropPiece 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }

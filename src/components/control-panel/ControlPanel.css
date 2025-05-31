@@ -122,16 +122,14 @@ body, html {
 /* hovered columns */
 .hover-column-overlay {
   position: absolute;
-  top: 15px; /* altura do padding da .board */
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  bottom: 0;
   display: flex;
-  width: 80%;
-  margin: auto;
   gap: 8px;
   z-index: 20;
-  pointer-events: none; /* torna tudo invisível ao mouse */
+  pointer-events: none;
 }
 
 .hover-column {
@@ -139,8 +137,10 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  pointer-events: auto; /* reativa o hover e click nas colunas */
+  padding-top: 20px;
+  pointer-events: auto;
   position: relative;
+  cursor: pointer;
 }
 
 .hover-piece {
@@ -148,6 +148,13 @@ body, html {
   height: 50px;
   border-radius: 50%;
   opacity: 0.8;
+  transition: transform 0.2s ease;
+  position: sticky;
+  top: 20px;
+}
+
+.hover-column:hover .hover-piece {
+  transform: scale(1.1);
 }
 
 .hover-piece.jogador1 {

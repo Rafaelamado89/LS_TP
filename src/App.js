@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import "./assets/styles/App.css";
 import NomeJogadores from "./components/game-panel/NomeJogadores";
 import ControlPanel from "./components/control-panel/ControlPanel";
@@ -20,13 +20,11 @@ function App() {
   const [bonusCells, setBonusCells] = useState([]);
   const [jogador1, setJogador1] = useState("PLAYER 1");
   const [jogador2, setJogador2] = useState("PLAYER 2");
-
-  // Temporarily store resetTimers until it's initialized
-  let resetTimersRef;
+  const resetTimersRef = useRef(null);
 
   const nextPlayer = useCallback(() => {
     setCurrentPlayer((prev) => (prev === 1 ? 2 : 1));
-    resetTimersRef?.(); // call only if defined
+    resetTimersRef.current?.();
   }, []);
 
   const { timeLeft1, timeLeft2, resetTimers } = useDualTurnTimers(
@@ -35,7 +33,9 @@ function App() {
     nextPlayer
   );
 
-  resetTimersRef = resetTimers;
+  useEffect(() => {
+    resetTimersRef.current = resetTimers;
+  }, [resetTimers]);
 
   function generateBonusCells() {
     const positions = new Set();
@@ -55,17 +55,17 @@ function App() {
     resetTimers();
   }
 
-  function processMove(colIndex, player) {
+  function processMove(colIndex) {
     const { updatedGrid, success, rowInserted } = insertPiece(
       grid,
       colIndex,
-      player
+      currentPlayer
     );
     if (!success) return;
 
     setGrid(updatedGrid);
 
-    const won = checkWinner(updatedGrid, player, rowInserted, colIndex);
+    const won = checkWinner(updatedGrid, currentPlayer, rowInserted, colIndex);
     if (won) {
       setWinner(currentPlayer);
       setGameStarted(false);
@@ -85,7 +85,7 @@ function App() {
   function handleColumnClick(colIndex) {
     if (!gameStarted) return;
     if (selectedLevel === 1 && currentPlayer === 2) return;
-    processMove(colIndex, currentPlayer);
+    processMove(colIndex);
   }
 
   useEffect(() => {
@@ -94,7 +94,7 @@ function App() {
     const timeout = setTimeout(() => {
       const cpuCol = cpuMove(grid, 2);
       if (cpuCol !== null) {
-        processMove(cpuCol, 2);
+        processMove(cpuCol);
       }
     }, 2000);
 
