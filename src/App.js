@@ -24,7 +24,7 @@ function App() {
 
   const nextPlayer = useCallback(() => {
     setCurrentPlayer((prev) => (prev === 1 ? 2 : 1));
-    resetTimersRef.current?.();
+    resetTimersRef?.current();
   }, []);
 
   const { timeLeft1, timeLeft2, resetTimers } = useDualTurnTimers(
@@ -139,6 +139,16 @@ function App() {
     resetTimers();
   }
 
+  function handleEndGame() {
+    setGrid(createEmptyGrid());
+    setCurrentPlayer(1);
+    setGameStarted(false);
+    setWinner(null);
+    setHideButtons(false);
+    setBonusCells([]);
+    resetTimers();
+  }
+
   return (
     <div id="container">
       <main>
@@ -161,6 +171,7 @@ function App() {
           timeLeft1={timeLeft1}
           timeLeft2={timeLeft2}
           bonusCells={bonusCells}
+          onEndGame={handleEndGame}
         />
 
         {winner && (
